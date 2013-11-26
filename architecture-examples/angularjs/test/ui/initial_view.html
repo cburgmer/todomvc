@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="todomvc" data-framework="angularjs">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>AngularJS • TodoMVC</title>
+		<link rel="stylesheet" href="../../bower_components/todomvc-common/base.css">
+		<style>[ng-cloak] { display: none; }</style>
+	</head>
+	<body>
+		<div ng-view></div>
+		<script>
+			window.angularTemplatePath = '../../templates/';
+		</script>
+		<script src="../../bower_components/angular/angular.js"></script>
+		<script src="../../bower_components/angular-route/angular-route.js"></script>
+		<script src="../../js/app.js"></script>
+		<script>
+			todomvc.controller('TodoCtrl', function TodoCtrl($scope) {
+				$scope.todos = [];
+				$scope.newTodo = '';
+				$scope.editedTodo = null;
+				$scope.status = '';
+				$scope.statusFilter = null;
+			});
+		</script>
+	</body>
+</html>
