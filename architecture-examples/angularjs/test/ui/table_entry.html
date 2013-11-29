@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="../../bower_components/todomvc-common/base.css">
 	</head>
 	<body ng-controller="Ctrl">
-		<ng-include src="'../../templates/overview.html'"></ng-include>
+		<div id="main" ng-include="'../../templates/table.html'"></div>
 		<script src="../../bower_components/angular/angular.js"></script>
 		<script>
 			angular.module('exceptionOverride', []).factory('$exceptionHandler', function () {
@@ -15,8 +15,11 @@
 				};
 			});
 			function Ctrl($scope) {
-				$scope.todos = [];
-				$scope.newTodo = '';
+				$scope.todos = [{
+					title: 'A random title',
+					completed: false
+				}];
+				$scope.remainingCount = 1;
 				$scope.editedTodo = null;
 				$scope.status = '';
 				$scope.statusFilter = null;
