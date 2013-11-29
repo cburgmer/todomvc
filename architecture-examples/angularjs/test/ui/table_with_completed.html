@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" ng-app="exceptionOverride">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../../bower_components/todomvc-common/base.css">
+    </head>
+    <body ng-controller="Ctrl">
+        <div id="main" ng-include="'../../templates/table.html'"></div>
+        <script src="../../bower_components/angular/angular.js"></script>
+        <script>
+            angular.module('exceptionOverride', []).factory('$exceptionHandler', function () {
+                return function (exception, cause) {
+                    exception.message += ' (caused by "' + cause + '")';
+                    throw exception;
+                };
+            });
+            function Ctrl($scope) {
+                $scope.todos = [{
+                    title: 'A completed title',
+                    completed: true
+                }];
+                $scope.remainingCount = 0;
+                $scope.completedCount = 1;
+                $scope.editedTodo = null;
+                $scope.status = '';
+                $scope.statusFilter = null;
+            };
+        </script>
+    </body>
+</html>
