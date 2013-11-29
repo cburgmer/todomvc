@@ -7,16 +7,15 @@
  *
  * @type {angular.Module}
  */
-var templatePath = window.angularTemplatePath || './templates/',
-    todomvc = angular.module('todomvc', ['ngRoute'])
+var todomvc = angular.module('todomvc', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.
             when('/overview', {
-                templateUrl: templatePath + 'overview.html',
+                templateUrl: 'templates/overview.html',
                 controller: 'TodoCtrl'
             }).
             when('/overview/:status', {
-                templateUrl: templatePath + 'overview.html',
+                templateUrl: 'templates/overview.html',
                 controller: 'TodoCtrl'
             }).
             otherwise({
