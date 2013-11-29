@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="exceptionOverride">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="../../bower_components/todomvc-common/base.css">
@@ -8,6 +8,12 @@
 		<ng-include src="'../../templates/overview.html'"></ng-include>
 		<script src="../../bower_components/angular/angular.js"></script>
 		<script>
+			angular.module('exceptionOverride', []).factory('$exceptionHandler', function () {
+				return function (exception, cause) {
+					exception.message += ' (caused by "' + cause + '")';
+					throw exception;
+				};
+			});
 			function Ctrl($scope) {
 				$scope.todos = [];
 				$scope.newTodo = '';
